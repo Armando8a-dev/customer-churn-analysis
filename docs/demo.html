@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análisis de Churn en Gimnasios - Model Fitness | Armando Ochoa</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            color: white;
+            padding: 60px 0;
+        }
+        
+        .header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            font-size: 1.1rem;
+            color: #666;
+            font-weight: 500;
+        }
+        
+        .insights-section {
+            background: white;
+            padding: 50px;
+            border-radius: 20px;
+            margin: 40px 0;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+        
+        .insights-section h2 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .insights-list {
+            list-style: none;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .insights-list li {
+            padding: 15px 0;
+            font-size: 1.1rem;
+            border-bottom: 1px solid #eee;
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .insights-list li:before {
+            content: "✅";
+            position: absolute;
+            left: 0;
+            font-size: 1.2rem;
+        }
+        
+        .tech-stack {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            margin: 40px 0;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+        
+        .tech-stack h3 {
+            font-size: 2rem;
+            color: #333;
+            margin-bottom: 30px;
+        }
+        
+        .tech-badges {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .tech-badge {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .cta-section {
+            text-align: center;
+            margin: 60px 0;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 18px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            color: white;
+        }
+        
+        .btn-secondary {
+            background: white;
+            color: #667eea;
+            border: 2px solid #667eea;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+        }
+        
+        .footer {
+            background: rgba(0,0,0,0.1);
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+            margin-top: 60px;
+            border-radius: 20px;
+        }
+        
+        .footer h4 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .footer p {
+            opacity: 0.8;
+            font-size: 1.1rem;
+        }
+        
+        .footer a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .header p {
+                font-size: 1.1rem;
+            }
+            
+            .stat-card {
+                padding: 30px 20px;
+            }
+            
+            .insights-section {
+                padding: 30px 20px;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏋️‍♂️ Análisis de Churn en Gimnasios</h1>
+            <p>Predicción inteligente de cancelaciones de clientes usando Machine Learning y análisis de comportamiento</p>
+        </div>
+        
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">4,000+</div>
+                <div class="stat-label">Clientes Analizados</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">15</div>
+                <div class="stat-label">Variables Predictivas</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">92%</div>
+                <div class="stat-label">Precisión del Modelo</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">5</div>
+                <div class="stat-label">Segmentos de Clientes</div>
+            </div>
+        </div>
+        
+        <div class="insights-section">
+            <h2>🎯 Resultados Principales</h2>
+            <ul class="insights-list">
+                <li>Desarrollado modelo predictivo con <strong>92% de precisión</strong> para identificar clientes en riesgo de cancelación</li>
+                <li>Identificados <strong>5 segmentos únicos</strong> de clientes mediante clustering con K-means</li>
+                <li>Los clientes con <strong>contratos más largos</strong> tienen menor probabilidad de cancelación</li>
+                <li>La <strong>participación en clases grupales</strong> es un factor clave de retención</li>
+                <li>Los <strong>gastos adicionales</strong> están correlacionados con mayor lealtad del cliente</li>
+                <li>Creado <strong>sistema de alertas tempranas</strong> para prevenir cancelaciones</li>
+            </ul>
+        </div>
+        
+        <div class="tech-stack">
+            <h3>🛠️ Stack Técnico</h3>
+            <div class="tech-badges">
+                <span class="tech-badge">Python</span>
+                <span class="tech-badge">Pandas</span>
+                <span class="tech-badge">NumPy</span>
+                <span class="tech-badge">Scikit-learn</span>
+                <span class="tech-badge">Matplotlib</span>
+                <span class="tech-badge">Seaborn</span>
+                <span class="tech-badge">Jupyter Notebook</span>
+                <span class="tech-badge">Machine Learning</span>
+                <span class="tech-badge">K-means Clustering</span>
+            </div>
+        </div>
+        
+        <div class="cta-section">
+            <div class="cta-buttons">
+                <a href="index.html" class="btn btn-primary">📊 Ver Análisis Completo</a>
+                <a href="https://github.com/Armando8a-dev/gym-customer-churn-analysis" class="btn btn-secondary">💻 Ver en GitHub</a>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <h4>👨‍💻 Armando Ochoa</h4>
+            <p>Data Analyst | Machine Learning Engineer</p>
+            <p>
+                <a href="https://github.com/Armando8a-dev">GitHub</a> • 
+                <a href="https://linkedin.com/in/www.linkedin.com/in/armando-ochoa-data-analyst">LinkedIn</a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>
