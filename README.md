@@ -1,7 +1,7 @@
 # 🏋️‍♂️ Análisis de Churn en Gimnasios - Model Fitness
 
-[![Demo Live](https://img.shields.io/badge/Demo-Live-brightgreen?style=for-the-badge&logo=github-pages)](https://armando8a-dev.github.io/gym-customer-churn-analysis/demo.html)
-[![Notebook](https://img.shields.io/badge/Jupyter-Notebook-orange?style=for-the-badge&logo=jupyter)](https://armando8a-dev.github.io/gym-customer-churn-analysis/index.html)
+[![Demo Live](https://img.shields.io/badge/Demo-Live-brightgreen?style=for-the-badge&logo=github-pages)](https://armando8a-dev.github.io/customer-churn-analysis/demo.html)
+[![Notebook](https://img.shields.io/badge/Jupyter-Notebook-orange?style=for-the-badge&logo=jupyter)](https://armando8a-dev.github.io/customer-churn-analysis/index.html)
 [![Python](https://img.shields.io/badge/Python-3.8+-blue?style=for-the-badge&logo=python)](https://python.org)
 
 ## 📋 Proyecto en Resumen
@@ -30,14 +30,14 @@ Análisis predictivo de **cancelaciones de clientes** en gimnasios usando Machin
 
 | 🎨 **Demo Interactiva** | 📓 **Análisis Completo** |
 |:---:|:---:|
-| [**Ver Demo →**](https://armando8a-dev.github.io/gym-customer-churn-analysis/demo.html) | [**Ver Notebook →**](https://armando8a-dev.github.io/gym-customer-churn-analysis/index.html) |
+| [**Ver Demo →**](https://armando8a-dev.github.io/customer-churn-analysis/demo.html) | [**Ver Notebook →**](https://armando8a-dev.github.io/customer-churn-analysis/index.html) |
 | Resumen visual ejecutivo | Código y análisis detallado |
 
 ## 📁 Estructura del Proyecto
 
 ```
 customer-churn-analysis/
-├── 📊 financial-visualization-data.ipynb    # Notebook principal
+├── 📊 customer-churn-analysis.ipynb           # Notebook principal
 ├── 📁 docs/
 │   ├── 🎨 demo.html                        # Página demo
 │   └── 📄 index.html                       # Notebook en HTML
@@ -70,15 +70,15 @@ customer-churn-analysis/
 ## 🚀 Cómo Usar
 
 ### Opción 1: Ver Online
-- **Demo**: [Página interactiva](https://armando8a-dev.github.io/gym-customer-churn-analysis/demo.html)
-- **Análisis**: [Notebook completo](https://armando8a-dev.github.io/gym-customer-churn-analysis/index.html)
+- **Demo**: [Página interactiva](https://armando8a-dev.github.io/customer-churn-analysis/demo.html)
+- **Análisis**: [Notebook completo](https://armando8a-dev.github.io/customer-churn-analysis/index.html)
 
 ### Opción 2: Ejecutar Localmente
 ```bash
 git clone https://github.com/Armando8a-dev/customer-churn-analysis.git
 cd customer-churn-analysis
 pip install pandas numpy matplotlib seaborn scikit-learn jupyter
-jupyter notebook financial-visualization-data.ipynb
+jupyter notebook customer-churn-analysis.ipynb
 ```
 
 ## 📞 Contacto
